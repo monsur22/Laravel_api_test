@@ -43,8 +43,14 @@ class ModelController extends Controller
         $service = new ModelName;
         $service->firstName=$request->input('firstName');
         $service->lastName=$request->input('lastName');
-        $service->img=$request->file('img')->store('model');
-        
+        // $service->img=$request->file('img')->store('model');
+        if($request->hasfile('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $request->img->getClientOriginalExtension();
+            $request->img->move($destinationPath, $profileImage);
+            $service->img = "$profileImage";
+        }
+
 
         $service->save();
         // return $service;
