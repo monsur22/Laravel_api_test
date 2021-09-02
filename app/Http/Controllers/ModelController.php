@@ -44,6 +44,8 @@ class ModelController extends Controller
         $service->firstName=$request->input('firstName');
         $service->lastName=$request->input('lastName');
         $service->img=$request->file('img')->store('model');
+        
+
         $service->save();
         // return $service;
         // dd($service->img);
