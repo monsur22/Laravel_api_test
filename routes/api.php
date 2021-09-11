@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModelController;
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,7 @@ Route::post('/model', [ModelController::class, 'store'])->name('model.store');
 Route::post('/model/update/{id}', [ModelController::class, 'update'])->name('model.update');
 Route::get('/model/edit/{id}', [ModelController::class, 'edit'])->name('model.edit');
 Route::delete('/model/delete/{id}', [ModelController::class, 'destroy'])->name('model.destroy');
+
+
+Route::post('/singup', [UserController::class, 'singup'])->name('singup');
+Route::post('/login', [UserController::class, 'login'])->name('login');
